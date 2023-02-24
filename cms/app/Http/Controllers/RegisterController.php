@@ -37,18 +37,18 @@ class RegisterController extends Controller
                 ->withInput();
         }
         
-        // Insert data ke database
-        $user = new Users;
-        $user->email = $request->email;
-        $user->nama = $request->name;
-        $user->alamat = $request->alamat;
-        $user->password = Hash::make($request->password);
-        $user->nohp = $request->nohp;
-        $user->akses = 0;
-        $user->save();
-        
-        // Redirect ke halaman sukses
-        return redirect('/login');
+            // Insert data ke database
+            $user = new Users;
+            $user->email = $request->email;
+            $user->nama = $request->name;
+            $user->alamat = $request->alamat;
+            $user->password = Hash::make($request->password);
+            $user->nohp = $request->nohp;
+            $user->akses = 0;
+            $user->save();
+            
+            // Redirect ke halaman sukses
+            return redirect('/login');
     }
 
 }

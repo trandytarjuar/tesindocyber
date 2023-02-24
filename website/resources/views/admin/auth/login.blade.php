@@ -37,6 +37,17 @@
                                 <h4 class="text-dark-50 text-center pb-0 fw-bold">Sign In</h4>
                                 <p class="text-muted mb-4">Enter your email address and password to access admin panel.</p>
                             </div>
+                            @if(session()->has('berhasil'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('berhasil')}}
+                                
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            @endif
+
+                            <div class="alert alert-success" role="alert">
+                                A simple success alert—check it out!
+                            </div>
 
                             <form action="{{ route('submit') }}" method="POST">
                                 @csrf

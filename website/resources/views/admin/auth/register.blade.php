@@ -38,7 +38,7 @@
                                 <p class="text-muted mb-4">Don't have an account? Create your account, it takes less than a minute </p>
                             </div>
 
-                            <form action="{{route('store')}}" method="POST">
+                            <form action="{{ route('store') }}" method="POST">
                                 @csrf
 
                                 <div class="mb-3">
@@ -74,9 +74,9 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="nohp" class="form-label">No Telp</label>
-                                    <input type="number" class="form-control" id="nohp" name="nohp"  required>
+                                    <input type="number" class="form-control" id="nohp" name="nohp" value="{{ old('email') }}" required>
 
-                                    @error('email')
+                                    @error('nohp')
                                     <span role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -136,7 +136,7 @@
 
                     <div class="row mt-3">
                         <div class="col-12 text-center">
-                            <p class="text-muted">Already have account? <a href="{{ url('/admin/login') }}" class="text-muted ms-1"><b>Log In</b></a></p>
+                            <p class="text-muted">Already have account? <a href="pages-login.html" class="text-muted ms-1"><b>Log In</b></a></p>
                         </div> <!-- end col-->
                     </div>
                     <!-- end row -->
