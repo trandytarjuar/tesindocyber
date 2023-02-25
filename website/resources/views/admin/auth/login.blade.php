@@ -44,23 +44,32 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                             @endif
-
-                            <div class="alert alert-success" role="alert">
-                                A simple success alert—check it out!
+                            @if(session()->has('gagallogin'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ session('gagallogin')}}
+                                
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
+                            @endif
+
+                           
 
                             <form action="{{ route('submit') }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
-                                    <label for="emailaddress" class="form-label">Email address</label>
-                                    <input class="form-control" type="email" id="emailaddress" required="" placeholder="Enter your email">
+                                    <label for="email" class="form-label">Email address</label>
+                                    <input class="form-control @error('email') is-invalid @enderror"" type="email" id="email"  name="email" value="{{ old('email') }}" autofocus required>
+                                    @error('email')
+                                    <span role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
 
-                                <div class="mb-3">
-                                    <a href="pages-recoverpw.html" class="text-muted float-end"><small>Forgot your password?</small></a>
+                                <div class="mb-3">                                    
                                     <label for="password" class="form-label">Password</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="password" id="password" class="form-control" placeholder="Enter your password">
+                                        <input type="password" id="password" name="password"class="form-control" required>
                                         <div class="input-group-text" data-password="false">
                                             <span class="password-eye"></span>
                                         </div>
@@ -80,7 +89,7 @@
 
                     <div class="row mt-3">
                         <div class="col-12 text-center">
-                            <p class="text-muted">Don't have an account? <a href="{{ url('/register') }}" class="text-muted ms-1"><b>Sign Up</b></a></p>
+                            <p class="text-muted">Don't have an account? <a href="{{ url('/admin/register') }}" class="text-muted ms-1"><b>Sign Up</b></a></p>
                         </div> <!-- end col -->
                     </div>
                     <!-- end row -->

@@ -41,10 +41,10 @@ class RegisterdController extends Controller
         $user->akses = 0;
         $user->save();
 
-        $request->session()->flash('berhasil','pendaftaran berhasil');
+        // $request->session()->flash('berhasil','pendaftaran berhasil');
         
         // Redirect ke halaman sukses
-        return redirect('/login')->with('berhasil','pendaftaran berhasil');
+        return redirect('/admin/login')->with('berhasil','pendaftaran berhasil');
         // dd($request); die;
     }
 }

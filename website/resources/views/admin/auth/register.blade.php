@@ -74,7 +74,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="nohp" class="form-label">No Telp</label>
-                                    <input type="number" class="form-control" id="nohp" name="nohp" value="{{ old('email') }}" required>
+                                    <input type="number" class="form-control" id="nohp" name="nohp" value="{{ old('nohp') }}" required>
 
                                     @error('nohp')
                                     <span role="alert">
@@ -136,7 +136,7 @@
 
                     <div class="row mt-3">
                         <div class="col-12 text-center">
-                            <p class="text-muted">Already have account? <a href="pages-login.html" class="text-muted ms-1"><b>Log In</b></a></p>
+                            <p class="text-muted">Already have account? <a href="{{ url('/admin/login') }}" class="text-muted ms-1"><b>Log In</b></a></p>
                         </div> <!-- end col-->
                     </div>
                     <!-- end row -->

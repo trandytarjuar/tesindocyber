@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\RegisterdController;
+use App\Http\Controllers\Admin\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +35,13 @@ use App\Http\Controllers\Admin\RegisterdController;
 //     // tambahkan route lainnya yang terkait dengan admin di sini
 // });
 Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index']);
-    Route::get('/register', [RegisterdController::class, 'index']);
+    Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+    Route::get('/register', [RegisterdController::class, 'index'])->middleware('guest');
     Route::post('/register', [RegisterdController::class, 'store'])->name('store');
+
+    Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+    Route::post('/login', [LoginController::class, 'submit'])->name('submit');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     // Route::get('/profile', 'Admin\ProfileController@index')->name('admin.profile');
     // tambahkan route lainnya yang terkait dengan admin di sini
 });
