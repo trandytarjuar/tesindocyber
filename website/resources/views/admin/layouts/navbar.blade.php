@@ -113,8 +113,8 @@
                             <img src="assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
                         </span>
                         <span>
-                            <span class="account-user-name">Soeng Souy</span>
-                            <span class="account-position">Founder</span>
+                            <span class="account-user-name">{{auth()->user()->name}}</span>
+                            <!-- <span class="account-position">Founder</span> -->
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown">
@@ -129,11 +129,6 @@
                             <button type="submit" class="dropdown-item"> <i class="mdi mdi-logout me-1"></i>
                             <span>Logout</span></button>
                         </form>
-                        <!-- item-->
-                        <!-- <a href="{{route('logout')}}" class="dropdown-item notify-item">
-                            <i class="mdi mdi-logout me-1"></i>
-                            <span>Logout</span>
-                        </a> -->
                     </div>
                 </li>
 
