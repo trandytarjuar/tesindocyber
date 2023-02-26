@@ -44,11 +44,14 @@ Route::prefix('admin')->group(function () {
     Route::post('/login', [LoginController::class, 'submit'])->name('submit');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-    Route::get('/produk', [ProdukController::class, 'index'])->name('index');
-    Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])->name('destroy');
-    Route::get('/create', [ProdukController::class, 'create'])->name('create');
-    Route::post('/produk', [ProdukController::class, 'store'])->name('store');
-    Route::get('/produk/{id}', [ProdukController::class, 'show'])->name('show');
+    Route::get('/produk', [ProdukController::class, 'index'])->name('index')->middleware('auth');
+    Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])->name('destroy')->middleware('auth');
+    Route::get('/create', [ProdukController::class, 'create'])->name('create')->middleware('auth');
+    Route::post('/produk', [ProdukController::class, 'store'])->name('store')->middleware('auth');
+    Route::get('/produk/{id}', [ProdukController::class, 'show'])->name('show')->middleware('auth');
+    Route::get('/produk/edit/{id}', [ProdukController::class, 'edit'])->name('edit')->middleware('auth');
+    Route::put('/produk/update/{id}', [ProdukController::class, 'update'])->name('update')->middleware('auth');
+    Route::get('/produk/getImages', [ProdukController::class, 'getImages'])->name('getImages')->middleware('auth');
     // Route::get('/profile', 'Admin\ProfileController@index')->name('admin.profile');
     // tambahkan route lainnya yang terkait dengan admin di sini
 });

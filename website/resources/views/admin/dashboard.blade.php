@@ -24,4 +24,4 @@
 <!-- content -->
 
 <!-- Footer Start -->
-@include('admin.layouts.script')
+@include('admin.layouts.footer')

@@ -45,6 +45,33 @@
         }
     });
 
+    // function previewImages() {
+    //     var preview = document.querySelector('#preview');
+    //     var files = document.querySelector('input[type=file]').files;
+
+    //     function readAndPreview(file) {
+    //         if (/\.(jpe?g|png)$/i.test(file.name)) {
+    //             var reader = new FileReader();
+
+    //             reader.addEventListener("load", function() {
+    //                 var image = new Image();
+    //                 image.title = file.name;
+    //                 image.src = this.result;
+    //                 preview.appendChild(image);
+    //             }, false);
+
+
+
+    //             reader.readAsDataURL(file);
+    //         }
+    //     }
+
+    //     if (files) {
+    //         [].forEach.call(files, readAndPreview);
+    //     }
+    // }
+
+    // document.querySelector('input[type=file]').addEventListener('change', previewImages);
     function previewImages() {
         var preview = document.querySelector('#preview');
         var files = document.querySelector('input[type=file]').files;
@@ -57,7 +84,21 @@
                     var image = new Image();
                     image.title = file.name;
                     image.src = this.result;
-                    preview.appendChild(image);
+
+                    // create image container with remove button
+                    var container = document.createElement('div');
+                    container.className = 'image-container';
+                    container.appendChild(image);
+
+                    var removeBtn = document.createElement('button');
+                    removeBtn.innerHTML = 'x';
+                    removeBtn.addEventListener('click', function() {
+                        container.remove();
+                    });
+
+                    container.appendChild(removeBtn);
+
+                    preview.appendChild(container);
                 }, false);
 
                 reader.readAsDataURL(file);
@@ -67,7 +108,106 @@
         if (files) {
             [].forEach.call(files, readAndPreview);
         }
+        var style = document.createElement('style');
+        style.innerHTML = `
+        .image-container {
+        display: inline-block;
+        position: relative;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        }
+
+        .image-container img {
+        display: block;
+        max-width: 200px;
+        max-height: 200px;
+        }
+
+        .image-container button {
+        display: block;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        padding: 5px;
+        background-color: red;
+        color: white;
+        border: none;
+        cursor: pointer;
+        }
+    `;
+        document.head.appendChild(style);
     }
 
     document.querySelector('input[type=file]').addEventListener('change', previewImages);
+
+    function previewImages() {
+        var preview = document.querySelector('#preview1');
+        var files = document.querySelector('input[type=file]').files;
+
+        function readAndPreview(file) {
+            if (/\.(jpe?g|png)$/i.test(file.name)) {
+                var reader = new FileReader();
+
+                reader.addEventListener("load", function() {
+                    var image = new Image();
+                    image.title = file.name;
+                    image.src = this.result;
+
+                    // create image container with remove button
+                    var container = document.createElement('div');
+                    container.className = 'image-container';
+                    container.appendChild(image);
+
+                    var removeBtn = document.createElement('button');
+                    removeBtn.innerHTML = 'x';
+                    removeBtn.addEventListener('click', function() {
+                        container.remove();
+                    });
+
+                    container.appendChild(removeBtn);
+
+                    preview.appendChild(container);
+                }, false);
+
+                reader.readAsDataURL(file);
+            }
+        }
+
+        if (files) {
+            [].forEach.call(files, readAndPreview);
+        }
+        
+        var style = document.createElement('style');
+        style.innerHTML = `
+        .image-container {
+        display: inline-block;
+        position: relative;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        }
+
+        .image-container img {
+        display: block;
+        max-width: 200px;
+        max-height: 200px;
+        }
+
+        .image-container button {
+        display: block;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        padding: 5px;
+        background-color: red;
+        color: white;
+        border: none;
+        cursor: pointer;
+        }
+    `;
+        document.head.appendChild(style);
+    }
+
+    document.querySelector('input[type=file]').addEventListener('change', previewImages);
+
+    
 </script>

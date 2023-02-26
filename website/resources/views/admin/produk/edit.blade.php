@@ -42,10 +42,11 @@
                         <div class="tab-pane show active" id="input-types-preview">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form method="POST" action="{{ route('store') }}" enctype="multipart/form-data">
+                                    <form method="POST" action="{{ route('update', $produk->id) }}" enctype="multipart/form-data">
                                         @csrf
+                                        @method('PUT')
                                         <div class="mb-3">
-                                            <div id="preview"></div>
+                                            <div id="preview1"></div>
                                             <label for="image" class="form-label">Image</label>
                                             <input type="file" id="image" name="images[]" class="form-control @error('image') is-invalid @enderror" value="{{ old('image') }}" required multiple>
                                             @error('image')
@@ -56,7 +57,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="nama_produk" class="form-label">Nama Produk</label>
-                                            <input type="text" id="nama_produk" name="nama_produk" class="form-control @error('nama_produk') is-invalid @enderror" value="{{ old('nama_produk') }}" required autofocus>
+                                            <input type="text" id="nama_produk" name="nama_produk" class="form-control @error('nama_produk') is-invalid @enderror" value="{{ $produk->nama_produk }}" required autofocus>
                                             @error('nama_produk')
                                             <span role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -67,7 +68,7 @@
                                             <label class="form-label" for="harga">Harga</label>
                                             <div class="input-group">
                                                 <span class="input-group-text" id="inputGroupPrepend">Rp</span>
-                                                <input type="text" class="form-control @error('harga') is-invalid @enderror" id="harga" name="harga" value="{{ old('harga') }}" aria-describedby="inputGroupPrepend"  required>
+                                                <input type="text" class="form-control @error('harga') is-invalid @enderror" id="harga" name="harga" value="{{ number_format($produk->harga, 0, ',', '.') }}" aria-describedby="inputGroupPrepend"  required>
                                                 @error('harga')
                                                 <span role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -78,7 +79,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="stock" class="form-label">Stok</label>
-                                            <input type="number" id="stock" name="stock" class="form-control @error('stock') is-invalid @enderror" value="{{ old('stock') }}" required>
+                                            <input type="number" id="stock" name="stock" class="form-control @error('stock') is-invalid @enderror" value="{{ $produk->stock }}" required>
                                             @error('stock')
                                             <span role="alert">
                                                 <strong>{{ $message }}</strong>

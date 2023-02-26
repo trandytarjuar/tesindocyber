@@ -52,6 +52,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                     @endif
+                    @if(session()->has('update'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('update')}}
+
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
                     <a href="{{ route('create') }}" class="btn btn-primary mb-3">Tambah Produk</a>
 
 
@@ -82,7 +89,7 @@
                                         <td>{{ $product->stock }}</td>
                                         <td>
                                             <a href="{{ route('show',$product->id) }}" class="btn btn-sm btn-success">Detail</a>
-                                            <a href="" class="btn btn-sm btn-primary">Ubah</a>
+                                            <a href="{{ route('edit',$product->id) }}" class="btn btn-sm btn-primary">Edit</a>
                                             <form action="{{ route('destroy', $product->id) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -110,4 +117,4 @@
 <!-- content -->
 
 <!-- Footer Start -->
-@include('admin.layouts.script')
+@include('admin.layouts.footer')
