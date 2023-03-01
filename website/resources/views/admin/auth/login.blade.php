@@ -32,6 +32,7 @@
                         </div>
 
                         <div class="card-body p-4">
+                            
 
                             <div class="text-center w-75 m-auto">
                                 <h4 class="text-dark-50 text-center pb-0 fw-bold">Sign In</h4>
@@ -40,6 +41,13 @@
                             @if(session()->has('berhasil'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 {{ session('berhasil')}}
+                                
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            @endif
+                            @if(session()->has('akses'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ session('akses')}}
                                 
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>

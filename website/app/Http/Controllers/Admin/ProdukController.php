@@ -93,12 +93,7 @@ class ProdukController extends Controller
         return view('admin.produk.edit', compact('produk'));
     }
 
-    public function getImages()
-    {
-        $images = Produk::pluck('gambar')->toArray();
-        dd($images); 
-        return response()->json($images);
-    }
+    
     public function update(Request $request, $id)
     {
         $request->validate([

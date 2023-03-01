@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -14,19 +15,27 @@ class LoginController extends Controller
     }
     public function submit(Request $request)
     {
-        $credential= $request->validate([
-            'email'=>'required|email:dns',
-            'password'=> 'required'
+        $credential = $request->validate([
+            'email' => 'required|email:dns',
+            'password' => 'required'
         ]);
+        $user = User::where('email', $credential['email'])->first();
 
-        if(Auth::attempt($credential)){
+        if (!$user) {
+            return redirect('/admin/login')->with('akses', 'Email tidak terdaftar');
+        }
+
+        if ($user->akses === 1) {
+            return redirect('/admin/login')->with('akses', 'Akses tidak diizinkan');
+        }
+        // dd($user); die;
+
+        if (Auth::attempt($credential)) {
             $request->session()->regenerate();
             return redirect()->intended('/admin/dashboard');
         }
 
-        return back()->with('gagallogin','login gagal');
-
-        
+        return back()->with('gagallogin', 'login gagal');
     }
 
     public function logout(Request $request)

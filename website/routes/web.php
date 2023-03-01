@@ -6,6 +6,10 @@ use App\Http\Controllers\Admin\RegisterdController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\ProdukController;
 
+use App\Http\Controllers\ecom\HomeController;
+use App\Http\Controllers\ecom\AuthController;
+use App\Http\Controllers\ecom\CartController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,7 +55,20 @@ Route::prefix('admin')->group(function () {
     Route::get('/produk/{id}', [ProdukController::class, 'show'])->name('show')->middleware('auth');
     Route::get('/produk/edit/{id}', [ProdukController::class, 'edit'])->name('edit')->middleware('auth');
     Route::put('/produk/update/{id}', [ProdukController::class, 'update'])->name('update')->middleware('auth');
-    Route::get('/produk/getImages', [ProdukController::class, 'getImages'])->name('getImages')->middleware('auth');
     // Route::get('/profile', 'Admin\ProfileController@index')->name('admin.profile');
     // tambahkan route lainnya yang terkait dengan admin di sini
+});
+
+Route::prefix('ecom')->group(function () {
+    Route::get('/home', [HomeController::class, 'index']);
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/register', [AuthController::class, 'register'])->name('register');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    
+    Route::post('/addtocart/{id}', [CartController::class, 'addtocart'])->name('addtocart');
+    Route::post('/cekout/{id}', [CartController::class, 'cekout'])->name('cekout');
+    Route::post('/delete/{id}', [CartController::class, 'delete'])->name('delete');
+    Route::get('/countKeranjang', [CartController::class, 'countKeranjang'])->name('countKeranjang');
+    Route::get('/detail/{id}', [CartController::class, 'detail'])->name('detail');
 });
