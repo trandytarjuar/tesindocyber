@@ -7,7 +7,6 @@ use App\Models\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-// use Illuminate\Support\Facades\Validator;
 
 
 class RegisterdController extends Controller
@@ -41,10 +40,6 @@ class RegisterdController extends Controller
         $user->akses = 0;
         $user->save();
 
-        // $request->session()->flash('berhasil','pendaftaran berhasil');
-        
-        // Redirect ke halaman sukses
         return redirect('/admin/login')->with('berhasil','pendaftaran berhasil');
-        // dd($request); die;
     }
 }

@@ -52,7 +52,7 @@
 
 
                         @else
-                        <a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a>
+                        <a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a>/<a href="#registermodal" data-toggle="modal"><i class="icon-user"></i>Register</a>
                         @endauth
 
 

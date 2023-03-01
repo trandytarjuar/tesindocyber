@@ -12,10 +12,9 @@
                             <li class="nav-item">
                                 <a class="nav-link active" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
-                            </li>
+
                         </ul>
+
                         <div class="tab-content" id="tab-content-5">
                             <div class="tab-pane fade show active" id="signin" role="tabpanel" aria-labelledby="signin-tab">
                                 <form id="loginForm" method="POST" enctype="multipart/form-data">
@@ -37,11 +36,37 @@
                                         </button>
 
 
+
                                     </div><!-- End .form-footer -->
                                 </form>
 
                             </div><!-- .End .tab-pane -->
 
+                            <!-- .End .tab-pane -->
+                        </div><!-- End .tab-content -->
+                    </div><!-- End .form-tab -->
+                </div><!-- End .form-box -->
+            </div><!-- End .modal-body -->
+        </div><!-- End .modal-content -->
+    </div><!-- End .modal-dialog -->
+</div>
+<div class="modal fade" id="registermodal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><i class="icon-close"></i></span>
+                </button>
+
+                <div class="form-box">
+                    <div class="form-tab">
+                        <ul class="nav nav-pills nav-fill" role="tablist">
+
+                            <li class="nav-item">
+                                <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="tab-content-5">
                             <div class="tab-pane fade" role="tabpanel" id="register" aria-labelledby="register-tab">
                                 <form id="registerform" enctype="multipart/form-data">
                                     @csrf
@@ -74,7 +99,7 @@
 
                                     <div class="form-footer">
                                         <!-- <a id="signup"class="btn btn-outline-primary-2"><span>SIGN UP</span>
-                                            <i class="icon-long-arrow-right"></i></a> -->
+                                         <i class="icon-long-arrow-right"></i></a> -->
                                         <button type="submit" id="signup" class="btn btn-outline-primary-2">
                                             <span>SIGN UP</span>
                                             <i class="icon-long-arrow-right"></i>
@@ -84,7 +109,9 @@
                                     </div><!-- End .form-footer -->
                                 </form>
 
-                            </div><!-- .End .tab-pane -->
+                            </div>
+
+                            <!-- .End .tab-pane -->
                         </div><!-- End .tab-content -->
                     </div><!-- End .form-tab -->
                 </div><!-- End .form-box -->
@@ -142,7 +169,7 @@
                             <div class="details-filter-row details-row-size">
                                 <label for="qty">Qty:</label>
                                 <div class="product-details-quantity">
-                                <input type="number" id="qty"class="form-control form-control-lg text-center" value="1">
+                                    <input type="number" id="qty" class="form-control form-control-lg text-center" value="1">
                                 </div><!-- End .product-details-quantity -->
                             </div><!-- End .details-filter-row -->
 

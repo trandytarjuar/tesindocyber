@@ -14,18 +14,14 @@ class CartController extends Controller
     public function addtocart(Request $request, $id)
     {
         $produk = Produk::findOrFail($id);
-        // dd($produk->stock);
 
         $quantity = $request->input('newQty');
-        // dd($quantity);
         $stok = $produk->stock;
 
         if ($quantity > $stok) {
             return response()->json(['success' => false, 'message' => 'quantity melebihi stock']);
         }
         $user_id = Auth::user()->id;
-
-        // dd(Keranjang::where('id_produk', $id));
 
         $cart = Keranjang::where('id_produk', $id)
             ->where('id_user', $user_id)
@@ -48,7 +44,6 @@ class CartController extends Controller
         }
 
         return response()->json(['success' => true, 'message' => 'Produk berhasil ditambahkan ke keranjang.']);
-        // return response()->json(['success' => false, 'message' => 'Invalid login credentials']);
     }
     public function countKeranjang()
     {
@@ -69,19 +64,13 @@ class CartController extends Controller
                         ->join('tbl_produk', 'tbl_keranjang.id_produk', '=', 'tbl_produk.id')
                         
                         ->get();
-        // dd($keranjangs);
         
         return view('ecom.detail', compact('keranjangs'));
     }
     public function cekout($id){
         $keranjangs = Keranjang::where('id_user', $id)->get();
         foreach ($keranjangs as $keranjang) {
-            // $keranjang = $keranjang->qty;
-            // $harga = $keranjang->harga;
-            // $total = $quantity * $harga;
-            // $subtotal += $total;
-    
-            // Update the Keranjang model to mark the item as checked out
+       
             $keranjang->status_checkout = 'ya';
             $keranjang->save();
         }

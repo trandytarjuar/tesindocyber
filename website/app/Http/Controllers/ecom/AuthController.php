@@ -32,8 +32,6 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        // dd("tes");
-        die;
         $request->validate([
             'email' => 'required|email:dns|max:50|unique:users',
             'name' => 'required',
@@ -46,6 +44,8 @@ class AuthController extends Controller
             'nohp' => 'required|numeric',
             'alamat' => 'required',
         ]);
+        $email = $request->post("email1");
+        dd($email);
 
         $user = new User();
         // dd($produks);
