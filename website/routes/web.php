@@ -46,7 +46,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
     Route::post('/login', [LoginController::class, 'submit'])->name('submit');
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+    Route::post('/logout', [LoginController::class, 'logout'])->name('admin.logout')->middleware('auth');
 
     Route::get('/produk', [ProdukController::class, 'index'])->name('index')->middleware('auth');
     Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])->name('destroy')->middleware('auth');

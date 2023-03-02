@@ -124,7 +124,7 @@
                         </div>
 
                        
-                        <form action="{{ route('logout') }}" method="POST">
+                        <form action="{{ route('admin.logout') }}" method="POST">
                             @csrf
                             <button type="submit" class="dropdown-item"> <i class="mdi mdi-logout me-1"></i>
                             <span>Logout</span></button>
