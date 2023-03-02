@@ -40,169 +40,132 @@
                 }
             })
         })
-       
-       
-        // $("#registerform").on('submit', function(e) {
-        //     event.preventDefault();
-        //     var nama = $('#nama').val().trim();
-        //     // alert(nama);
-        //     var email1 = $('#email1').val().trim();
-        //     // alert(email1); 
-        //     var nohp = $('#nohp').val().trim();
-        //     var alamat = $('#alamat').val().trim();
-        //     var password1 = $('#password1').val().trim();
-        //     var password_confirmation = $('#password_confirmation').val().trim();
-        //     var token = $('input[name="_token"]').val();
-        //     // alert(token)
-
-        //     // var email_regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        //     // var password_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
-        //     var nohp_regex = /^\d+$/;
-
-        //     var valid = true;
-
-        //     if (nama == '') {
-        //         valid = false;
-        //         alert('Nama harus diisi');
-        //     }
-
-        //     if (email1 == '') {
-        //         valid = false;
-        //         alert('Email harus diisi');
-        //     }
-        //     if (nohp == '') {
-        //         valid = false;
-        //         alert('No HP harus diisi');
-        //     } else if (!nohp_regex.test(nohp)) {
-        //         valid = false;
-        //         alert('No HP harus berupa angka');
-        //     }
-
-        //     if (alamat == '') {
-        //         valid = false;
-        //         alert('Alamat harus diisi');
-        //     }
-
-        //     if (password1 == '') {
-        //         valid = false;
-        //         alert('Password harus diisi');
-        //     }
-
-        //     if (password_confirmation == '') {
-        //         valid = false;
-        //         alert('Konfirmasi Password harus diisi');
-        //     }
-        //     let data = new FormData();
-        //     data.append("nama", nama)
-        //     data.append("email1", email1)
-        //     data.append("nohp", nohp)
-        //     data.append("alamat", alamat)
-        //     data.append("password1", password1)
-        //     data.append("token", token)
-        //     $.ajax({
-        //         url: '/ecom/register',
-        //         method: 'POST',
-        //         data: data,
-        //         cache: false,
-        //         contentType: false,
-        //         processData: false,
-        //         success: function(data) {
-
-        //         },
-        //         error: function() {
-
-        //         }
-        //     })
-        // })
     })
     $("#registerform").on('submit', function(e) {
-            event.preventDefault();
-            var nama = $('#nama').val().trim();
-            var email1 = $('#email1').val();
-            alert(email1)
-            var nohp = $('#nohp').val().trim();
-            var alamat = $('#alamat').val().trim();
-            var password1 = $('#password1').val().trim();
-            var password_confirmation = $('#password_confirmation').val().trim();
+        event.preventDefault();
+        var nama = $('#nama').val();
+        var email1 = $('#email1').val();
+        // alert(email1)
+        var nohp = $('#nohp').val();
+        var alamat = $('#alamat').val();
+        var password1 = $('#password1').val();
+        var password_confirmation = $('#password_confirmation').val();
 
-            var email_regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            var nohp_regex = /^\d+$/;
-            var password_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
-            var token = $('input[name="_token"]').val();
+        var email_regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        var nohp_regex = /^\d+$/;
+        var password_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+        var token = $('input[name="_token"]').val();
 
-            var valid = true;
+        var valid = true;
 
-            if (nama == '') {
-                valid = false;
-                alert('Nama harus diisi');
-            }
+        if (nama == '') {
+            valid = false;
+            alert('Nama harus diisi');
+        }
 
-            if (email1 == '') {
-                valid = false;
-                alert('Email harus diisi');
-            } else if (!email_regex.test(email1)) {
-                valid = false;
-                alert('Email harus valid');
-            }
+        if (email1 == '') {
+            valid = false;
+            alert('Email harus diisi');
+        } else if (!email_regex.test(email1)) {
+            valid = false;
+            alert('Email harus valid');
+        }
 
-            if (nohp == '') {
-                valid = false;
-                alert('No HP harus diisi');
-            } else if (!nohp_regex.test(nohp)) {
-                valid = false;
-                alert('No HP harus berupa angka');
-            }
+        if (nohp == '') {
+            valid = false;
+            alert('No HP harus diisi');
+        } else if (!nohp_regex.test(nohp)) {
+            valid = false;
+            alert('No HP harus berupa angka');
+        }
 
-            if (alamat == '') {
-                valid = false;
-                alert('Alamat harus diisi');
-            }
+        if (alamat == '') {
+            valid = false;
+            alert('Alamat harus diisi');
+        }
 
-            if (password1 == '') {
-                valid = false;
-                alert('Password harus diisi');
-            } else if (!password_regex.test(password1)) {
-                valid = false;
-                alert('Password minimal 6 karakter, terdiri dari huruf besar, huruf kecil, angka, dan karakter non-alphanumeric (Contoh: !, $, #, atau %)');
-            }
+        if (password1 == '') {
+            valid = false;
+            alert('Password harus diisi');
+        } else if (!password_regex.test(password1)) {
+            valid = false;
+            alert('Password minimal 6 karakter, terdiri dari huruf besar, huruf kecil, angka, dan karakter non-alphanumeric (Contoh: !, $, #, atau %)');
+        }
 
-            if (password_confirmation == '') {
-                valid = false;
-                alert('Konfirmasi Password harus diisi');
-            } else if (password_confirmation !== password1) {
-                valid = false;
-                alert('Konfirmasi Password harus sama dengan Password');
-            }
+        if (password_confirmation == '') {
+            valid = false;
+            alert('Konfirmasi Password harus diisi');
+        } else if (password_confirmation !== password1) {
+            valid = false;
+            alert('Konfirmasi Password harus sama dengan Password');
+        }
 
-            if (valid) {
-                let data = new FormData();
-                data.append("nama", nama)
-                data.append("email1", email1)
-                data.append("nohp", nohp)
-                data.append("alamat", alamat)
-                data.append("password1", password1)
-                data.append("token", token)
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        if (valid) {
+            let data = new FormData();
+            data.append("nama", nama)
+            data.append("email1", email1)
+            data.append("nohp", nohp)
+            data.append("alamat", alamat)
+            data.append("password1", password1)
+            data.append("token", token)
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: '/ecom/register',
+                method: 'POST',
+                data: data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(result) {
+                    if (result.errors) {
+                        $('.alert-danger').html('');
+
+                        $.each(result.errors, function(key, value) {
+                            $('.alert-danger').show();
+                            $('.alert-danger').append('<li>' + value + '</li>');
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Sukses',
+                            text: result.message
+                        })
+                        $("#registermodal").modal('hide');
+                        $.ajax({
+                            url: '/ecom/login',
+                            type: 'POST',
+                            data: {
+
+                                'email': email1,
+                                'password': password1,
+                            },
+                            success: function(response) {
+                                if (response.success) {
+                                 
+                                    location.reload();
+                                } else {
+                                 
+
+                                }
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                console.log(textStatus, errorThrown);
+                            }
+
+                        })
+                        // window.location.href = '/ecom/login?email=' + email1;
                     }
-                });
-                $.ajax({
-                    url: '/ecom/register',
-                    method: 'POST',
-                    data: data,
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    success: function(data) {
+                },
+                error: function() {
 
-                    },
-                    error: function() {
-
-                    }
-                })
-            }
-        })
+                }
+            })
+        }
+    })
 
     function showConfirmation() {
         if (confirm("Apakah produk yang ingin dibeli sudah benar?")) {
@@ -253,7 +216,7 @@
             }
         })
     }
-    
+
 
     addcart = async (productid) => {
         var btnIncrement = document.querySelector(".btn-increment");

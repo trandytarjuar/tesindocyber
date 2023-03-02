@@ -68,7 +68,8 @@
                         </ul>
                         <div class="tab-content" id="tab-content-5">
                             <div class="tab-pane fade" role="tabpanel" id="register" aria-labelledby="register-tab">
-                                <form id="registerform" enctype="multipart/form-data">
+                                <div class="alert alert-danger" style="display:none"></div>
+                                <form id="registerform" action="{{ route('register') }}" enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="form-group">
